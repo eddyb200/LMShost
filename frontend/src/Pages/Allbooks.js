@@ -169,7 +169,7 @@ function Allbooks() {
     return () => {
       clearInterval(intervalId);
     };
-  }, [API_URL,user]);
+  }, [API_URL,user,cancelReserve,intervalId]);
 
 // admin delete function
   const handleDeleteBook = async (bookid)=>{
