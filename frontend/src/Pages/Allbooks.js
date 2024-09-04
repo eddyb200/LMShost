@@ -136,7 +136,7 @@ function Allbooks() {
       setisLoading(false)
       console.log(error);
     }
-  },[API_URL]);
+  },[API_URL,selectedBook,user]);
 
 
   // Function to automatically check reservations and delete if reservations exceed 7 days
