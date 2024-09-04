@@ -1,0 +1,277 @@
+.books-page{
+    height: 100vh max-content;
+    width: 100vw;
+    background-color: rgb(224, 219, 219);
+}
+
+.books{
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+    gap: 20px;
+    padding: 15px;
+    max-width: 1524px;
+    /* background-color: pink; */
+}
+
+
+
+.no-books-container img{
+    height: 50px;
+    width: auto;
+    margin-left: 50%;
+    margin-top: 35%;
+}
+
+.no-books-container h2{
+    margin-left: 45%;
+}
+
+
+.book-card{
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
+    height: auto;
+    width: 250px;
+    align-items: center;
+    padding: 25px;
+    margin: 10px;
+    -webkit-box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 15px;
+    position: relative;
+    background-color: rgb(238, 238, 238);
+}
+
+.book-card img{
+    width: 150px;
+    height: auto;
+    margin-bottom: 25px!important;
+    border-radius: 18px;
+}
+
+.book-card img:hover{
+    transform: scale(1.05);
+    transition: all ease 1.3s;
+}
+
+.bookcard-title{
+    word-wrap: break-word;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    color: black;
+}
+
+.bookcard-author{
+    color: rgb(141, 140, 140);
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.bookcard-category{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    width: 90%;
+    bottom: 5%;
+    left: 5%;
+    justify-content: space-between;
+}
+
+.bookcard-category p{
+    padding: 8px 15px;
+    background-color: lightgray;
+    font-weight: 600;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.bookcard-category span{
+    padding: 8px 15px;
+    background-color: rgb(47, 226, 31);
+    font-weight: 700;
+    margin: 5px;
+    border-radius: 5px;
+}
+.bookcard-emptybox{
+    height: 50px;
+    position: relative;
+    bottom: 0%;
+    background-color: rgb(0, 0, 0);
+}
+
+.bookoptions{
+    position: fixed; /* instead of absolute, use fixed to center it on the screen */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* center it horizontally and vertically */
+    height: 30vh; /* use vh instead of % to make it responsive */
+    width: 20vw; /* use vw instead of % to make it responsive */
+    border-radius: 15px;
+    background-color: white;
+    z-index: 10;
+    padding: 20px; /* add some padding to make it look nicer */
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5); /* add a shadow to make it stand out */
+  }
+  
+  /* add a blur effect to the background */
+  .bookoptions::backdrop {
+    backdrop-filter: blur(5px);
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    filter: blur(5px);
+    z-index: 9;
+  }
+  
+  /* show the overlay when the bookoptions is visible */
+  .bookoptions.show + .overlay {
+    display: block;
+  }
+
+.bookoptions .bookoptions-info{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    width: 90%;
+    top: 25%;
+    left: 5%;
+    justify-content: space-between;
+}
+
+
+.bookoptions .bookoptions-info p{
+    padding: 8px 15px;
+    background-color: lightgray;
+    font-weight: 600;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+
+.bookoptions .bookoptions-info span{
+    padding: 8px 15px;
+    background-color:rgb(241, 82, 24);
+    font-weight: 700;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.bookoptions .bookoptions-info .category{
+    padding: 8px 15px;
+    background-color:rgb(24, 198, 241);
+    font-weight: 700;
+    margin: 5px;
+    border-radius: 5px;
+}
+.bookoptions .reserve-options{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    width: 90%;
+    bottom: 5%;
+    left: 5%;
+    justify-content: space-evenly;
+}
+
+.bookoptions .reserve-options button{
+    padding: 8px 15px;
+    width: auto;
+    font-weight: 700;
+    color: white;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.bookoptions .reserve-options .reserve{
+    background-color: green;
+}
+
+.bookoptions .reserve-options .reserve:hover{
+    background-color: rgb(8, 247, 8);
+}
+.bookoptions .reserve-options .delete{
+    background-color: rgb(250, 0, 0);
+}
+
+.bookoptions .reserve-options .delete:hover{
+    background-color: rgb(250, 57, 57);
+}
+
+.bookoptions .reserve-options .cancelreserve{
+    background-color: red;
+}
+
+.bookoptions .reserve-options .cancelreserve:hover{
+    background-color: rgb(236, 53, 53);
+}
+
+.closeOptions{
+    padding: 8px 10px;
+    font-weight: 700;
+    color:black;
+    border-radius: 5px;
+    border: none;
+}
+/* Mobile View */
+@media screen and (max-width:768px){
+    .books-page{
+        height: 100%;
+        width: 100vw;
+    }
+    .books{
+        margin-left: 15%; /* reduce margin top and bottom by 30% */
+   }
+    .book-card{
+         width: 175px; /* 250px * 0.7 = 175px */
+     }
+     
+    .book-card img{
+         width: 105px; /* 150px * 0.7 = 105px */
+     }
+     
+    .bookcard-title{
+         font-size: 11px; /* 16px * 0.7 = 11px */
+     }
+     
+    .bookcard-author{
+         font-size: 10px; /* 14px * 0.7 = 10px */
+     }
+     
+    .bookcard-category p{
+         padding: 5px 10px; /* reduce padding by 30% */
+         font-size: 10px; /* reduce font size by 30% */
+     }
+     
+    .bookcard-category span{
+         padding: 5px 10px; /* reduce padding by 30% */
+         font-size: 10px; /* reduce font size by 30% */
+     }
+     
+    .bookcard-emptybox{
+         height: 35px; /* 50px * 0.7 = 35px */
+     }
+
+     .bookoptions{
+        position: fixed; /* instead of absolute, use fixed to center it on the screen */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* center it horizontally and vertically */
+        height: 35vh; /* use vh instead of % to make it responsive */
+        width: 50vw; /* use vw instead of % to make it responsive */
+        border-radius: 15px;
+        background-color: white;
+        z-index: 10;
+        padding: 20px; /* add some padding to make it look nicer */
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.5); /* add a shadow to make it stand out */
+      }
+ }

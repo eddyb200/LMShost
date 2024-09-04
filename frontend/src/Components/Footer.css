@@ -1,0 +1,68 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  color: rgb(12, 12, 12);
+  font-size: larger;
+  font-weight: 700;
+}
+
+.footer-data {
+  display: flex;
+  justify-content: space-around;
+}
+
+.contact-details {
+  text-align: left;
+  letter-spacing: 1.5px;
+  margin: 15px;
+}
+
+
+.librarian-details {
+  text-align: left;
+  letter-spacing: 1.5px;
+  margin: 15px;
+}
+
+.contact-details h1,
+.usefull-links h1,
+.librarian-details h1 {
+  font-size: 25px;
+  color: rgb(5, 131, 16);
+  padding-bottom: 15px;
+  border-bottom-style: solid;
+  border-bottom-width: 3.1px;
+  width: fit-content;
+}
+
+.contact-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px;
+}
+
+
+.social-icon {
+  margin: 10px;
+}
+
+.copyright-details p {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1.15px;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.copyright-details span {
+  font-size: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-data {
+    display: flex;
+    flex-direction: column;
+  }
+}

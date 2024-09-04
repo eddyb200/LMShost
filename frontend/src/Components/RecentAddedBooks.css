@@ -1,0 +1,81 @@
+.recentaddedbooks-container{
+    background-color: #02592f;
+    display: flex;
+    flex-direction: column;
+}
+
+.recentbooks{
+    padding: 20px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;	
+    position: relative;
+	display: flex;
+}
+
+.recentbooks:hover div{
+    animation-play-state: paused;
+}
+
+.recentbooks-title{
+    position: relative;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+}
+
+.recent-book:hover{
+    transform: scale(1.15);
+    transition: all ease 0.7s;
+    animation-play-state: paused;
+}
+
+.no-books{
+    margin-left: 49%;
+    
+}
+.no-books img{
+    height: 20px;
+    width: auto;
+}
+.no-books p{
+    margin-left: -4%;
+    color: #f8cd0f;
+}
+
+/* Mobile View */
+@media screen and (max-width:768px){
+    .no-books{
+        margin-left: 45%;
+        
+    }
+    .no-books img{
+        height: 20px;
+        width: auto;
+    }
+    .no-books p{
+        margin-left: -18%;
+        color: white;
+    }
+}
+
+.images{
+    animation: marquee 15s linear infinite;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.recent-book{
+    display: block;
+    width: 150px;
+    height: auto;
+    margin: 0 1vw;
+    border-radius: 5px;
+}
+
+@keyframes marquee {
+	0%   { transform: translateX(0%); }
+	100% { transform: translateX(-100%); }
+}

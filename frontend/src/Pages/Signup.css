@@ -1,0 +1,112 @@
+.signup-container {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  background-image: url("../image2.jpg");
+  background-position: calc(200% - -200px) center;
+  background-size: cover;
+  transition: filter 0.3s; /* Add transition effect */
+  z-index: -1; /* Make sure it's behind the signin card */
+}
+
+.signin-container.blur-bg::before {
+  filter: blur(10px); /* Apply blur filter to the background */
+}
+
+
+
+a {
+  text-decoration: none;
+}
+
+.signup-card {
+  font-family: sans-serif;
+  width: 100%;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 10px !important;
+  background-color: #ffff;
+  box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  padding: 30px;
+}
+
+.error-message{
+  color: red;
+  font-weight: bold;
+}
+
+.signup-title {
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+  color: #02592f;
+}
+
+.signup-option {
+  background-color: rgb(69, 69, 185, 0.2);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.line {
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 2px solid rgb(245 239 239);
+  line-height: 2px;
+  margin: 25px 0;
+}
+
+.signup-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-fields label {
+  color: rgb(26, 24, 24);
+  text-align: left;
+  margin-top: 5px;
+}
+
+.signup-textbox {
+  padding: 15px 20px;
+  margin-top: 2px;
+  margin-bottom: 1px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.signup-button {
+  background-color: #5ac273;
+  color: white;
+  padding: 18px 20px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  margin-left: auto !important;
+  margin-left: auto !important;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forget-pass {
+  text-align: center;
+  display: block;
+}
+
+.signup-question {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 15px !important;
+  padding: 15px;
+}
