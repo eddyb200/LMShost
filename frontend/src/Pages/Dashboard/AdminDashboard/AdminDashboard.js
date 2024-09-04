@@ -7,7 +7,6 @@ import AddBook from "./Components/AddBook";
 import { AuthContext } from "../../../Context/AuthContext";
 import axios from "axios";
 
-import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import BookIcon from "@material-ui/icons/Book";
 import ReceiptIcon from "@material-ui/icons/Receipt";
@@ -35,7 +34,7 @@ function AdminDashboard() {
   const API_URL = process.env.REACT_APP_API_URL;
   const { user } = useContext(AuthContext);
   const [memberDetails, setMemberDetails] = useState(null);
-  const [allmembers, setAllMembers] = useState(null);
+  // const [allmembers, setAllMembers] = useState(null);
 
   useEffect(() => {
     const getMemberDetails = async () => {
