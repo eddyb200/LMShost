@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useCallback} from "react";
 import "./Allbooks.css";
 import axios from "axios";
 import { useContext } from 'react';
@@ -104,7 +104,7 @@ function Allbooks() {
   };
 
   // cancel reservation
-  const cancelReserve = async (bookId) =>{
+  const cancelReserve = useCallback(async (bookId) =>{
     try {
       setisLoading(true)
       const book = await axios.get(`${API_URL}api/books/getbook/${bookId}`);
@@ -136,7 +136,7 @@ function Allbooks() {
       setisLoading(false)
       console.log(error);
     }
-  };
+  });
 
 
   // Function to automatically check reservations and delete if reservations exceed 7 days
