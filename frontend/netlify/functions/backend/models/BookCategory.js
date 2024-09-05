@@ -1,18 +1,17 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const BookCategorySchema = new mongoose.Schema({
-    categoryName:{
-        type:String,
-        unique:true
+    categoryName: {
+        type: String,
+        unique: true
     },
-    books:[{
-            type:mongoose.Types.ObjectId,
-            ref:"Book",
-            default:null
-        }]
-},
-{
-    timestamps:true
-})
+    books: [{
+        type: mongoose.Types.ObjectId,
+        ref: "Book",
+        default: null
+    }]
+}, {
+    timestamps: true
+});
 
-export default mongoose.model("BookCategory",BookCategorySchema)
+module.exports = mongoose.model("BookCategory", BookCategorySchema);

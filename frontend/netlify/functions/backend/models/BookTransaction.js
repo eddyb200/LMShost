@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+const mongoose = require("mongoose");
 
 const BookTransactionSchema = new mongoose.Schema({
     bookId: {
@@ -46,4 +46,4 @@ const BookTransactionSchema = new mongoose.Schema({
     }
 );
 
-export default mongoose.model("BookTransaction", BookTransactionSchema)
+module.exports = mongoose.model("BookTransaction", BookTransactionSchema)
