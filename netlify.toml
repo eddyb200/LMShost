@@ -1,7 +1,7 @@
 [build]
   base = "frontend"
-  functions = "frontend/netlify/functions/backend"
-
+  functions = "netlify/functions/backend"
+  command = "npm install --prefix netlify/functions/backend && npm run build"
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/backend/server"
