@@ -1,11 +1,12 @@
-import express from "express"
-import Book from "../models/Book.js"
-import BookCategory from "../models/BookCategory.js"
-import multer from "multer";
-import mongoose from "mongoose";
-const router = express.Router()
-import path from "path";
-import * as fs from 'fs';
+const express = require("express");
+const Book = require("../models/Book");
+const BookCategory = require("../models/BookCategory");
+const multer = require("multer");
+const mongoose = require("mongoose");
+const path = require("path");
+const fs = require("fs");
+
+const router = express.Router();
 
 let uploadedFileName
 
@@ -220,4 +221,4 @@ router.delete("/removebook/:id", async (req, res) => {
         }
 })
 
-export default router
+module.exports = router;

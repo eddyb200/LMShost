@@ -1,13 +1,13 @@
-import serverless from "serverless-http";
-import express from "express";
-import mongoose from "mongoose";
-import cors from "cors";
-import dotenv from "dotenv";
-import authRoutes from "./routes/auth.js";
-import userRoutes from "./routes/users.js";
-import bookRoutes from "./routes/books.js";
-import transactionRoutes from "./routes/transactions.js";
-import categoryRoutes from "./routes/categories.js";
+const serverless = require("serverless-http");
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/users");
+const bookRoutes = require("./routes/books");
+const transactionRoutes = require("./routes/transactions");
+const categoryRoutes = require("./routes/categories");
 
 /* App Config */
 dotenv.config();
@@ -47,4 +47,4 @@ app.get("/", (req, res) => {
 });
 
 // Export the app to be used by the Netlify function
-export const handler = serverless(app);
+module.exports.handler = serverless(app);

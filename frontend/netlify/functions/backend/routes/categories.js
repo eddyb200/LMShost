@@ -1,5 +1,5 @@
-import express from "express";
-import BookCategory from "../models/BookCategory.js";
+const express = require("express");
+const BookCategory = require("../models/BookCategory");
 
 const router = express.Router();
 
@@ -34,4 +34,4 @@ router.get("/getcategory/:id",async (req,res)=>{
   }
 })
 
-export default router;
+module.exports = router;

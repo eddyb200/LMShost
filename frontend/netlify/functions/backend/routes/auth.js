@@ -1,8 +1,8 @@
-import express from "express";
-import User from "../models/User.js";
-import bcrypt from "bcrypt";
-import nodemailer from 'nodemailer';
-import dotenv from "dotenv";
+const express = require("express");
+const User = require("../models/User");
+const bcrypt = require("bcrypt");
+const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
 const router = express.Router();
 
 dotenv.config();
@@ -162,4 +162,4 @@ router.post("/resetPassword", async (req, res) => {
 });
 
 
-export default router;
+module.exports = router;
