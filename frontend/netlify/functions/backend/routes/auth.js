@@ -3,13 +3,12 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
-const router = express.Router();
 
 dotenv.config();
-const DevEmail = process.env.DevEmail ;
-const DevPass =  process.env.DevPass;
+const DevEmail = process.env.DevEmail;
+const DevPass = process.env.DevPass;
 
-export const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: DevEmail,
@@ -17,16 +16,15 @@ export const transporter = nodemailer.createTransport({
     }
 });
 
+const router = express.Router();
+
 /* User Registration */
 router.post("/register", async (req, res) => {
   try {
-    /* Salting and Hashing the Password */
     const salt = await bcrypt.genSalt(10);
     const hashedPass = await bcrypt.hash(req.body.password, salt);
-  
 
-    /* Create a new user */
-    const newuser = await new User({
+    const newuser = new User({
       userType: req.body.userType,
       userFullName: req.body.userFullName,
       admissionId: req.body.admissionId,
@@ -41,31 +39,24 @@ router.post("/register", async (req, res) => {
       isAdmin: req.body.isAdmin,
     });
 
-    /* Save User and Return */
     const user = await newuser.save();
     res.status(200).json(user);
   } catch (err) {
     console.log(err);
+    res.status(500).json({ message: "Server Error" });
   }
 });
 
 /* User Login */
 router.post("/signin", async (req, res) => {
   try {
-    console.log(req.body, "req");
     const user = req.body.admissionId
-      ? await User.findOne({
-          admissionId: req.body.admissionId,
-        })
-      : await User.findOne({
-          employeeId: req.body.employeeId,
-        });
-
-    console.log(user, "user");
+      ? await User.findOne({ admissionId: req.body.admissionId })
+      : await User.findOne({ employeeId: req.body.employeeId });
 
     if (!user) {
       return res.status(404).json("User not found");
-    };
+    }
 
     const validPass = await bcrypt.compare(req.body.password, user.password);
     if (!validPass) {
@@ -75,19 +66,20 @@ router.post("/signin", async (req, res) => {
     res.status(200).json(user);
   } catch (err) {
     console.log(err);
+    res.status(500).json({ message: "Server Error" });
   }
 });
 
 // User Forgot Password Endpoints
 
-// sends code to user email
+// Sends code to user email
 router.get("/sendCode/:email", async (req, res) => {
   const generatedCode = Math.floor(Math.random() * 9000) + 1000;
   const email = req.params.email;
   const message = `
   <div style="text-align: left;">
       <p>Hello,</br>
-          Use the code below to reset to reset your password for KNUST Library System Account
+          Use the code below to reset your password for KNUST Library System Account
       </p>
       <h1 style="letter-spacing: 1px; color: rgb(0, 194, 0);">${generatedCode}</h1>
       <p style="font-size: 15px;">
@@ -125,7 +117,7 @@ router.get("/sendCode/:email", async (req, res) => {
   }
 });
 
-// verifies code sent by user
+// Verifies code sent by user
 router.post('/verifyCode', async (req, res) => {
   const { email, code } = req.body;
   try {
@@ -133,7 +125,7 @@ router.post('/verifyCode', async (req, res) => {
     if (!user) {
       return res.json({ message: 'User not found' });
     }
-    if (code!= user.passCode) {
+    if (code != user.passCode) {
       return res.json({ message: 'Code does not match' });
     } else {
       return res.json({ message: "Code match" });
@@ -144,8 +136,7 @@ router.post('/verifyCode', async (req, res) => {
   }
 });
 
-// resets password
-
+// Resets password
 router.post("/resetPassword", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -161,5 +152,4 @@ router.post("/resetPassword", async (req, res) => {
   }
 });
 
-
-module.exports = router;
+module.exports = { transporter, router };

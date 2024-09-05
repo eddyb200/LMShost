@@ -10,7 +10,7 @@ const router = express.Router();
 
 let uploadedFileName
 
-import multer from "multer";
+
 
 // Use memory storage instead of disk storage
 const upload = multer({
