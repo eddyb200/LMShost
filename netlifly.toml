@@ -1,6 +1,6 @@
 [build]
   base = "frontend"
-  functions = "frontend/netifly/functions/backend"
+  functions = "frontend/netlifly/functions/backend"
 
 [[redirects]]
   from = "/api/*"
