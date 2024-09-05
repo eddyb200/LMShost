@@ -9,34 +9,30 @@ import * as fs from 'fs';
 
 let uploadedFileName
 
+import multer from "multer";
+
+// Use memory storage instead of disk storage
 const upload = multer({
-    storage: multer.diskStorage({
-      destination: '../frontend/public/assets/coverImages',
-      filename: (req, file, cb) => {
-        const fileName = Math.floor(Math.random() * 9000000000) + 1000000000;
-        cb(null, fileName + path.extname(file.originalname))
-        uploadedFileName = fileName + path.extname(file.originalname)
-      },
-    }),
-    fileFilter(req, file, cb) {
-      if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-        cb(null, true);
-      } else {
-        cb(new Error('Only JPG and PNG images are allowed'));
-      }
-    },
-    limits: {
-      fileSize: 1024 * 1024 * 2, // 2MB
-    },
-  });
-  
-  upload.error = (err, req, res, next) => {
-    if (err.code === 'LIMIT_FILE_SIZE') {
-      return res.status(413).json({ message: 'File too large, File should be below 1.5 MB' });
+  storage: multer.memoryStorage(), // Store files in memory
+  fileFilter(req, file, cb) {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+      cb(null, true);
     } else {
-      next(err);
+      cb(new Error('Only JPG and PNG images are allowed'));
     }
-  };
+  },
+  limits: {
+    fileSize: 1024 * 1024 * 2, // 2MB
+  },
+});
+
+upload.error = (err, req, res, next) => {
+  if (err.code === 'LIMIT_FILE_SIZE') {
+    return res.status(413).json({ message: 'File too large, should be below 2MB' });
+  } else {
+    next(err);
+  }
+};
 
 
 // get total number of books
